@@ -5,104 +5,100 @@
   let flipped = false;
 
   const suits = {
-    spade :   { unicode: '♠', color: 'black' },
-    club :    { unicode: '♣', color: 'black' },
-    heart :   { unicode: '♥', color: 'red' },
-    diamond : { unicode: '♦', color: 'red' },
-    joker :   { unicode: '',  color: 'black' },
+    spade: { unicode: '♠', color: 'black' },
+    club: { unicode: '♣', color: 'black' },
+    heart: { unicode: '♥', color: 'red' },
+    diamond: { unicode: '♦', color: 'red' },
+    joker: { unicode: '', color: 'black' },
   };
 
   const patterns = {
-    1: [
-        {x: 0, y: 0},
-      ],
+    1: [{ x: 0, y: 0 }],
     2: [
-        {x: 0, y: -1},
-        {x: 0, y: 1, mirrored: true}
-      ],
+      { x: 0, y: -1 },
+      { x: 0, y: 1, mirrored: true },
+    ],
     3: [
-        {x: 0, y: -1},
-        {x: 0, y: 0},
-        {x: 0, y: 1, mirrored: true},
-      ],
+      { x: 0, y: -1 },
+      { x: 0, y: 0 },
+      { x: 0, y: 1, mirrored: true },
+    ],
     4: [
-        {x: -1, y: -1},
-        {x: -1, y: 1, mirrored: true},
-        {x: 1, y: -1},
-        {x: 1, y: 1, mirrored: true},
-      ],
+      { x: -1, y: -1 },
+      { x: -1, y: 1, mirrored: true },
+      { x: 1, y: -1 },
+      { x: 1, y: 1, mirrored: true },
+    ],
     5: [
-        {x: -1, y: -1},
-        {x: -1, y: 1, mirrored: true},
-        {x: 0, y: 0},
-        {x: 1, y: -1},
-        {x: 1, y: 1, mirrored: true},
-      ],
+      { x: -1, y: -1 },
+      { x: -1, y: 1, mirrored: true },
+      { x: 0, y: 0 },
+      { x: 1, y: -1 },
+      { x: 1, y: 1, mirrored: true },
+    ],
     6: [
-        {x: -1, y: 1, mirrored: true},
-        {x: -1, y: -1},
-        {x: -1, y: 0},
-        {x: 1, y: 0},
-        {x: 1, y: -1},
-        {x: 1, y: 1, mirrored: true},
-      ],
+      { x: -1, y: 1, mirrored: true },
+      { x: -1, y: -1 },
+      { x: -1, y: 0 },
+      { x: 1, y: 0 },
+      { x: 1, y: -1 },
+      { x: 1, y: 1, mirrored: true },
+    ],
     7: [
-        {x: -1, y: 1, mirrored: true},
-        {x: -1, y: -1},
-        {x: -1, y: 0},
-        {x: 0, y: -1/2},
-        {x: 1, y: 0},
-        {x: 1, y: -1},
-        {x: 1, y: 1, mirrored: true},
-      ],
+      { x: -1, y: 1, mirrored: true },
+      { x: -1, y: -1 },
+      { x: -1, y: 0 },
+      { x: 0, y: -1 / 2 },
+      { x: 1, y: 0 },
+      { x: 1, y: -1 },
+      { x: 1, y: 1, mirrored: true },
+    ],
     8: [
-        {x: -1, y: 1, mirrored: true},
-        {x: -1, y: -1},
-        {x: -1, y: 0},
-        {x: 0, y: -1/2},
-        {x: 0, y: 1/2, mirrored: true},
-        {x: 1, y: 0},
-        {x: 1, y: -1},
-        {x: 1, y: 1, mirrored: true},
-      ],
+      { x: -1, y: 1, mirrored: true },
+      { x: -1, y: -1 },
+      { x: -1, y: 0 },
+      { x: 0, y: -1 / 2 },
+      { x: 0, y: 1 / 2, mirrored: true },
+      { x: 1, y: 0 },
+      { x: 1, y: -1 },
+      { x: 1, y: 1, mirrored: true },
+    ],
     9: [
-        {x: -1, y: -1},
-        {x: -1, y: -1/3},
-        {x: -1, y: 1, mirrored: true},
-        {x: -1, y: 1/3, mirrored: true},
-        {x: 0, y: 0},
-        {x: 1, y: -1},
-        {x: 1, y: -1/3},
-        {x: 1, y: 1, mirrored: true},
-        {x: 1, y: 1/3, mirrored: true},
-      ],
+      { x: -1, y: -1 },
+      { x: -1, y: -1 / 3 },
+      { x: -1, y: 1, mirrored: true },
+      { x: -1, y: 1 / 3, mirrored: true },
+      { x: 0, y: 0 },
+      { x: 1, y: -1 },
+      { x: 1, y: -1 / 3 },
+      { x: 1, y: 1, mirrored: true },
+      { x: 1, y: 1 / 3, mirrored: true },
+    ],
     10: [
-        {x: -1, y: -1},
-        {x: -1, y: 1, mirrored: true},
-        {x: -1, y: 1/3, mirrored: true},
-        {x: -1, y: -1/3},
-        {x: 0, y: -2/3},
-        {x: 0, y: 2/3, mirrored: true},
-        {x: 1, y: -1/3},
-        {x: 1, y: 1/3, mirrored: true},
-        {x: 1, y: 1, mirrored: true},
-        {x: 1, y: -1},
-      ],
-  }
+      { x: -1, y: -1 },
+      { x: -1, y: 1, mirrored: true },
+      { x: -1, y: 1 / 3, mirrored: true },
+      { x: -1, y: -1 / 3 },
+      { x: 0, y: -2 / 3 },
+      { x: 0, y: 2 / 3, mirrored: true },
+      { x: 1, y: -1 / 3 },
+      { x: 1, y: 1 / 3, mirrored: true },
+      { x: 1, y: 1, mirrored: true },
+      { x: 1, y: -1 },
+    ],
+  };
   const s = suits[suit];
-  const pattern = (typeof value === 'number' && value > 0 && value < 11) ? patterns[value] : patterns[1];
-
+  const pattern = typeof value === 'number' && value > 0 && value < 11 ? patterns[value] : patterns[1];
 </script>
 
-
 <div class="scene">
-  <div class="card {s.color}" class:flipped on:click={() => flipped = !flipped} >
+  <div class="card {s.color}" class:flipped on:click="{() => (flipped = !flipped)}">
     <div class="card__face card__face--front">
       <div class="card__header card__header--top">
         <span>{value}</span>
         <span>{s.unicode}</span>
       </div>
-  
+
       <div class="card__pattern">
         {#if value === 'J'}
           <div class="symbol figure">♙</div>
@@ -114,11 +110,13 @@
           <div class="symbol figure">🃏</div>
         {:else}
           {#each pattern as symbol}
-            <div class="symbol {symbol.mirrored ? 'mirrored' : ''}" style="left: {symbol.x * 100}%; top: {symbol.y * 100}%">{s.unicode}</div>
+            <div class="symbol {symbol.mirrored ? 'mirrored' : ''}" style="left: {symbol.x * 100}%; top: {symbol.y * 100}%">
+              {s.unicode}
+            </div>
           {/each}
         {/if}
       </div>
-  
+
       <div class="card__header card__header--bottom mirrored">
         <span>{value}</span>
         <span>{s.unicode}</span>
@@ -150,7 +148,7 @@
   .card.flipped {
     transform: translateX(100%) rotateY(-180deg);
   }
-  
+
   .card__face {
     position: absolute;
     width: 100%;
@@ -170,13 +168,7 @@
   }
 
   .card__face--back {
-    background: repeating-linear-gradient(
-      45deg,
-      #606dbc,
-      #606dbc 10px,
-      #465298 10px,
-      #465298 20px
-    );
+    background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
     transform: rotateY(180deg);
   }
 
@@ -208,7 +200,6 @@
     height: 30%;
     transform: translate(-50%, -50%);
   }
-
 
   .red {
     color: red;
