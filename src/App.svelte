@@ -22,10 +22,10 @@
 </script>
 
 <div class="flex">
-  <!-- {#each cards as card}
+  {#each cards as card}
     <Card2 cid="{card}" />
-  {/each} -->
-  <Hand />
+  {/each}
+  <!-- <Hand /> -->
 </div>
 
 <style>
